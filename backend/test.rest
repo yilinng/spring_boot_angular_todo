@@ -1,0 +1,86 @@
+POST http://localhost:8080/api/todos
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNjk0NDg1MzY3LCJleHAiOjE2OTUwOTAxNjd9.RKj6U38_3TjZgHi0R1S5O3WyOLcTNIKItXfj5A93cTPGlWL7i41ZAZ5li8LygRrU
+Content-Type: application/json
+
+{
+  "title": "test title12",
+  "content": "test content....12"
+}
+
+###
+GET http://localhost:8080/api/todos
+//Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNjk0NDIzMDk5LCJleHAiOjE2OTUwMjc4OTl9.Kvrs-1BNuVzEThC4IcH4UO6aaLtLQf6u8xLKkHlwtCkKxw_277P81Q0loVs5XzJd
+
+###
+GET http://localhost:8080/api/todos/65001ace2b002e5e1d0e9fa3
+//Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNjk0NDg1MzY3LCJleHAiOjE2OTUwOTAxNjd9.RKj6U38_3TjZgHi0R1S5O3WyOLcTNIKItXfj5A93cTPGlWL7i41ZAZ5li8LygRrU
+
+
+###
+PATCH   http://localhost:8080/api/todos/6500030d2b002e5e1d0e9f63
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNjk0NDg1MzY3LCJleHAiOjE2OTUwOTAxNjd9.RKj6U38_3TjZgHi0R1S5O3WyOLcTNIKItXfj5A93cTPGlWL7i41ZAZ5li8LygRrU
+Content-Type: application/json
+
+{
+  "title": "test title11 update",
+  "content": "test content....11"
+}
+
+###
+DELETE http://localhost:8080/api/todos/65001ace2b002e5e1d0e9fa3
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNjk0NDg1MzY3LCJleHAiOjE2OTUwOTAxNjd9.RKj6U38_3TjZgHi0R1S5O3WyOLcTNIKItXfj5A93cTPGlWL7i41ZAZ5li8LygRrU
+
+
+###
+GET http://localhost:8080/api/todos/search/?title="test"
+
+###
+POST http://localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "test",
+  "username": "test username",
+  "email": "test@test.com",
+  "password": "test"
+}
+
+
+###
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "usernameOrEmail": "test@test.com",
+  "password": "test"
+}
+
+###
+
+GET http://localhost:8080/api/auth/email
+Content-Type: application/json
+
+
+
+###
+
+GET http://localhost:8080/api/auth/refreshtoken
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0MTJAdGVzdC5jb20iLCJpYXQiOjE2OTQxNDI1MTIsImV4cCI6MTY5NDc0NzMxMn0.km3xbkR5zemzBMU2bg8TjTFP_4Vr0sM8SpYNlBgqmK_MXNFS64kECQuHYgXo_57E
+
+###
+DELETE http://localhost:8080/post/delete-post/64eda6ae753d09035674e291
+
+###
+GET http://localhost:8080/api/auth/user
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNjk0NTcyNjI5LCJleHAiOjE2OTUxNzc0Mjl9.y4t_SUbFNX9zHpkjQlEQZM5QxepBqri0hSGNGfx7jaJrzz79XFyEuMNbcLUIJu7t
+
+###
+POST http://localhost:8080/api/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNjk0NDg1MzY3LCJleHAiOjE2OTUwOTAxNjd9.RKj6U38_3TjZgHi0R1S5O3WyOLcTNIKItXfj5A93cTPGlWL7i41ZAZ5li8LygRrU
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNjk0NDg1MzY3LCJleHAiOjE2OTUwOTAxNjd9.phyNLG3jymkSv1deyhzfg8f6jVpxv1Dq-JvMv3ajJPE"
+}
+
+

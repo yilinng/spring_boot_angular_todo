@@ -1,0 +1,13 @@
+<div class="header">
+  <h5 class="title" routerLink="/"  data-testid="banner-home">Angular Mean Auth</h5>
+  <nav class="navbar">
+    <a class="todoList" routerLink="/todos" routerLinkActive="active"  data-testid="banner-todos">todoList</a>
+    <a *ngIf="isLoggedIn || this.authService.isLoggedIn" class="user-profile" routerLinkActive="active"
+      routerLink="/user-profile"  data-testid="banner-user">User Profile</a>
+    <button (click)="logout()" *ngIf="isLoggedIn || this.authService.isLoggedIn " type="button" class="logoutBtn"  data-testid="banner-logout">Logout</button>
+  </nav>
+  <nav class="navbar" *ngIf="!isLoggedIn && !this.authService.isLoggedIn">
+    <a class="sign-up" routerLinkActive="active" routerLinkActive="active" routerLink="/sign-up" data-testid="banner-signup">Sign up</a>
+    <a class="sign-in" routerLinkActive="active" routerLink="/log-in" data-testid="banner-login">Sign in</a>
+  </nav>
+</div>

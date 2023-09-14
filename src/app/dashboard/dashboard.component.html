@@ -1,0 +1,13 @@
+<h2 customDirective="red" data-testid="top-todos">Top Todos</h2>
+<div class="todos-menu" *ngIf="todos.length">
+  <a *ngFor="let todo of todos"
+      routerLink="/todos/{{todo.id}}" data-testid="todo-item-link">
+      {{todo.title && truncateString(todo.title, 15) }}
+  </a>
+</div>
+
+<div class="loader" *ngIf="!todos"></div>
+
+
+<app-todo-search></app-todo-search>
+<ng-template adHost></ng-template>

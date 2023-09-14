@@ -1,0 +1,141 @@
+<div class="auth-wrapper" *ngIf="!this.authService.isLoggedIn">
+  <form
+    class="form-signin"
+    [formGroup]="signupForm"
+    (ngSubmit)="registerUser()"
+  >
+    <h3 class="h3 mb-3 font-weight-normal text-center">Please sign up</h3>
+    <div class="form-group">
+      <label>Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        placeholder="Enter name"
+        required
+        minlength="4"
+      />
+
+      <div class="status">
+        <h4
+          class="alert"
+          *ngIf="signupForm.controls['name'].errors?.['required']"
+        >
+          Name is required
+        </h4>
+
+        <h4
+          class="alert_noErr"
+          *ngIf="!signupForm.controls['name'].errors?.['minlength']"
+        >
+          Name must be at least 4 characters long.
+        </h4>
+
+        <h4
+          class="alert"
+          *ngIf="signupForm.controls['name'].errors?.['minlength']"
+        >
+          Name must be at least 4 characters long.
+        </h4>
+
+        <h4
+          class="alert_noErr"
+          *ngIf="!signupForm.controls['name'].errors?.['required']"
+        >
+          Please enter name
+        </h4>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label>username</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="username"
+        placeholder="Enter username"
+        required
+        minlength="4"
+      />
+
+      <div class="status">
+        <h4 class="alert">
+          {{signupForm.controls['username'].errors?.['required'] ? 'username is required': signupForm.controls['username'].errors?.['minlength'] ? 'must be at least 4 characters long.' : ''}}
+        </h4>
+
+        <h4 class="success" *ngIf="!signupForm.controls['username'].errors?.['required'] && !signupForm.controls['username'].errors?.['minlength'] && !signupForm.controls['username'].errors?.['username']   && checkUsername()">
+          username is unique
+        </h4>
+      </div>
+      
+    </div>
+
+    <div class="form-group-email">
+      <label>Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="Enter email"
+        required
+      />
+
+      <div class="status">
+        <h4 class="alert">
+          {{signupForm.controls['email'].errors?.['required'] ? 'email is required': signupForm.controls['email'].errors?.['email'] ? 'email address is invalid': checkEmail() ? '' : 'email is not unique'}}
+        </h4>
+
+        <h4 class="success" *ngIf="!signupForm.controls['email'].errors?.['required'] && !signupForm.controls['email'].errors?.['email']   && checkEmail()">
+          email is unique
+        </h4>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input
+        type="password"
+        class="form-control"
+        formControlName="password"
+        placeholder="Password"
+        required
+        minlength="6"
+      />
+
+      <div class="status">
+        <h4
+          class="alert"
+          *ngIf="signupForm.controls['password'].errors?.['required']"
+        >
+          password is required
+        </h4>
+
+        <h4
+          class="alert_noErr"
+          *ngIf="!signupForm.controls['password'].errors?.['minlength']"
+        >
+          Password must be at least 4 characters long.
+        </h4>
+
+        <h4
+          class="alert"
+          *ngIf="signupForm.controls['password'].errors?.['minlength']"
+        >
+          Password must be at least 4 characters long.
+        </h4>
+
+        <h4
+          class="alert_noErr"
+          *ngIf="!signupForm.controls['password'].errors?.['required']"
+        >
+          password is required
+        </h4>
+      </div>
+    </div>
+
+    <button type="submit" class="signupBtn" [disabled]="checkValue()">
+      Sign up
+    </button>
+  </form>
+</div>

@@ -1,0 +1,31 @@
+<div *ngIf="todo && user && todo.user === user.id" class="edit_Todo">
+  <h2 data-testid="details-user-name">{{ user.name | uppercase }} Details</h2>
+  <div class="form-group">
+    <label for="title">title: </label>
+    <input id="title" [(ngModel)]="todo.title" placeholder="title..." data-testid="todo-input-title"/>
+  </div>
+
+  <div class="form-group">
+    <label for="content">content:</label>
+    <textarea
+      class="form-control"
+      id="content"
+      [(ngModel)]="todo.content"
+      name="content"
+      data-testid="todo-input-content"
+    ></textarea>
+  </div>
+
+  <button type="button" class="backBtn" (click)="goBack()" data-testid="todo-input-back-btn">go back</button>
+  <button type="button" class="saveBtn" (click)="save()" data-testid="todo-input-save-btn">save</button>
+</div>
+
+<div *ngIf="todo && (user && todo.user !== user.id || !user)" class="todo_detail">
+  <h2 class="title" data-testid="todo-title">title: {{ todo.title }} Details</h2>
+  <p class="content" data-testid="todo-content">content: {{ todo.content }}</p>
+
+  <div class="date" data-testid="todo-date">update date: {{ todo.updateDate | date : "MM/dd/yy" }}</div>
+
+
+  <button type="button" class="backBtn" (click)="goBack()" data-testid="todo-btn">go back</button>
+</div>

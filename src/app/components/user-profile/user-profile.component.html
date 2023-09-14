@@ -1,0 +1,55 @@
+<div class="user_detail" *ngIf="currentUser && currentUser?.name" >
+  <div class="user_Content">
+    <div class="user_Form" [hidden]="submitted" *ngIf="clickTodo">
+      <h3>Add Todo</h3>
+      <form (ngSubmit)="onSubmit()" [formGroup]="addTodoForm">
+        <div class="form-group">
+          <label for="name">Title</label>
+          <input type="text" class="form-control" id="title" name="title" formControlName="title" required />
+        </div>
+
+        <div class="form-group">
+          <label for="alterEgo">Content</label>
+          <textarea class="form-control" id="content" name="content" formControlName="content" required></textarea>
+        </div>
+
+
+        <button type="submit" class="submitBtn" [disabled]="checkValue()">Submit</button>
+        <button type="button" class="newBtn" (click)="newTodo()">New Todo</button>
+      </form>
+
+    </div>
+
+    <div class="detail"  [@openClose]="showUser ? 'open' : 'closed'">
+      <div *ngIf="showUser">
+      <h3>user detail</h3>
+      <div class="name">name: {{currentUser.name}}</div>
+      <div class="email">email: {{currentUser.email}}</div>
+    </div>
+    </div>
+
+  </div>
+  <div class="column todoList">
+    <div class="header">
+      <span class="title">todoList</span>
+      <div class="btnList">
+        <button type="button" class="addBtn" (click)="showTodo()">Add Todo + </button>
+        <button type="button" class="showBtn" (click)="clickUser()">Show user detail </button>
+      </div>
+    </div>
+
+    <ul>
+      <li *ngFor="let todo of todos" class="todo">
+        <div class="todoHeader">
+        <a routerLink="/todos/{{todo.id}}">
+          <h2 class="badge">{{todo.title && truncateString(todo.title, 30) }}</h2>
+        </a>
+        <button type="button" class="deleteBtn" title="delete hero" (click)="delete(todo)">delete</button>
+      </div>
+        <p class="todo">content: {{todo.content}}</p>
+      </li>
+    </ul>
+  </div>
+
+</div>
+<div class="loader" *ngIf="!currentUser"></div>
